@@ -1,0 +1,19 @@
+version: '3'
+services:
+  interface-test:
+    image: interface-test
+    restart: always
+    hostname: interface-test
+    container_name: interface-test
+    networks:
+      - mbiscuit
+    volumes:
+      - /data/interfaceTester/tools-web.jar:/data/tools-web.jar
+    command: /bin/java -jar -Dspring.profiles.active=prod /data/tools-web.jar
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+networks:
+  mbiscuit:
+    external: true

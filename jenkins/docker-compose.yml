@@ -1,0 +1,24 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins
+    restart: always
+    hostname: jenkins
+    container_name: jenkins
+    networks:
+      - mbiscuit
+    volumes:
+      - /data/jenkins/jenkins-data:/root/.jenkins
+      - /data/jenkins/webapps:/data/tomcat/webapps
+      - /data/jenkins/deploy.sh:/data/deploy.sh
+      - ./id_rsa:/root/.ssh/id_rsa
+      - ./id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ./known_hosts:/root/.ssh/known_hosts
+    command: /usr/bin/sh /data/tomcat/bin/catalina.sh run
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+networks:
+  mbiscuit:
+    external: true

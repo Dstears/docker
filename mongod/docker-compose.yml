@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mongod:
+    image: mongod
+    restart: always
+    hostname: mongod
+    container_name: mongod
+    networks:
+      - mbiscuit
+    volumes:
+      - ./mongod.conf:/etc/mongod.conf
+      - /data/mongo:/var/lib/mongo
+    ports:
+      - 27017:27017
+    command: /usr/bin/mongod -f /etc/mongod.conf
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+networks:
+  mbiscuit:
+    external: true

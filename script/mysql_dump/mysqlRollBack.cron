@@ -1,0 +1,1 @@
+0 * * * * /root/docker/script/mysql_dump/mysql_dump_script.sh

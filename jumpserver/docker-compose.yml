@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jumpserver:
+    image: jumpserver
+    hostname: jumpserver
+    container_name: jumpserver
+    networks:
+      - mbiscuit
+    command: tail -f /dev/null
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+networks:
+  mbiscuit:
+    external: true

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    #    restart: always
+    hostname: gitlab
+    privileged: true
+    container_name: gitlab
+    networks:
+      - mbiscuit
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.7.78:9999'
+    volumes:
+      #      - '/data/gitlab/config:/etc/gitlab'
+      #      - '/data/gitlab/logs:/var/log/gitlab'
+      - /data/gitlab/data:/var/opt/gitlab
+    ports:
+      - 9999:9999
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+networks:
+  mbiscuit:
+    external: true

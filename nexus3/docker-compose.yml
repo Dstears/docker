@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nexus3:
+    image: sonatype/nexus3
+    restart: always
+    hostname: nexus3
+    container_name: nexus3
+    networks:
+      - mbiscuit
+    volumes:
+      - /data/nexus-data:/nexus-data
+    ports:
+      - 8084:8081
+networks:
+  mbiscuit:
+    external: true

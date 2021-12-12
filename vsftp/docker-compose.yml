@@ -1,0 +1,8 @@
+version: '3'
+services:
+  vsftpd:
+    image: vsftpd
+    restart: always
+    hostname: vsftpd
+    container_name: vsftpd
+    command: tail -f /dev/null

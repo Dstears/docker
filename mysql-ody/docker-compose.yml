@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql-ody:
+    image: mysqlody
+    restart: always
+    hostname: mysql-ody
+    container_name: mysql-ody
+    networks:
+      - mbiscuit
+    volumes:
+      - /data/mysql-ody:/var/lib/mysql
+      - ./my.cnf:/etc/my.cnf
+    ports:
+      - 3309:3309
+    environment:
+      MYSQL_ROOT_PASSWORD: 'ody,123'
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+networks:
+  mbiscuit:
+    external: true

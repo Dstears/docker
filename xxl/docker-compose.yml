@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mongod:
+    image: xxl
+    hostname: xxl
+    container_name: xxl
+    networks:
+      - mbiscuit
+    command: /usr/bin/java -jar /data/xxl-job-admin-2.2.0.jar
+    deploy:
+      resources:
+        limits:
+          memory: 800M
+networks:
+  mbiscuit:
+    external: true

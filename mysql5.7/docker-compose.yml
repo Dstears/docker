@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql5.7:
+    image: mysql57
+    restart: always
+    hostname: mysql5.7
+    container_name: mysql5.7
+    networks:
+      - mbiscuit
+    volumes:
+      - /data/mysql5.7:/var/lib/mysql
+      - ./my.cnf:/etc/my.cnf
+    ports:
+      - 3308:3306
+    environment:
+      - "MYSQL_ROOT_PASSWORD=nCWC[ja2wiecRi"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+networks:
+  mbiscuit:
+    external: true

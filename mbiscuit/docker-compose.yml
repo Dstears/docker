@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mbiscuit:
+    image: mbiscuit
+    hostname: mbiscuit
+    container_name: mbiscuit
+    networks:
+      - mbiscuit
+    volumes:
+      - ./known_hosts:/root/.ssh/known_hosts
+      - ./id_rsa:/root/.ssh/id_rsa
+      - ./id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ./application-prod.yml:/data/application-prod.yml
+      - /data/mbiscuit/mbiscuit.jar:/data/mbiscuit.jar
+    command: /bin/java -jar -Dspring.config.location=/data/application-prod.yml -Dspring.profiles.active=prod /data/mbiscuit.jar
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+networks:
+  mbiscuit:
+    external: true

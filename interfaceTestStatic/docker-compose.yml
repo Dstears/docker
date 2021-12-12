@@ -1,0 +1,19 @@
+version: '3'
+services:
+  interface-test-static:
+    image: interface-test-static
+    hostname: interface-test-static
+    container_name: interface-test-static
+    networks:
+      - mbiscuit
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /data/interfaceTester/static:/data
+    command: nginx
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+networks:
+  mbiscuit:
+    external: true

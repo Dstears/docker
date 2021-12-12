@@ -1,0 +1,18 @@
+version: '3'
+services:
+  wts:
+    image: wts
+    restart: always
+    hostname: wts
+    container_name: wts
+    volumes:
+      - /data/wts:/data/tomcat/webapps
+      - ./jdbc.properties:/data/jdbc.properties
+    networks:
+      - mbiscuit
+    ports:
+      - 8083:8080
+    command: /usr/bin/sh /data/tomcat/bin/catalina.sh run
+networks:
+  mbiscuit:
+    external: true
