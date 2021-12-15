@@ -5,14 +5,11 @@ services:
     restart: always
     hostname: redis7000
     container_name: redis7000
-    networks:
-      omc:
-        ipv4_address: 172.16.0.100
     ports:
-      - 7000:6379
-      - 17000:16379
+      - 7000:7000
+      - 17000:17000
     volumes:
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis7000.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
     deploy:
       resources:
@@ -23,14 +20,11 @@ services:
     restart: always
     hostname: redis7001
     container_name: redis7001
-    networks:
-      omc:
-        ipv4_address: 172.16.0.101
     ports:
-      - 7001:6379
-      - 17001:16379
+      - 7001:7001
+      - 17001:17001
     volumes:
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis7001.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
     deploy:
       resources:
@@ -41,14 +35,11 @@ services:
     restart: always
     hostname: redis8000
     container_name: redis8000
-    networks:
-      omc:
-        ipv4_address: 172.16.0.102
     ports:
-      - 8000:6379
-      - 18000:16379
+      - 8000:8000
+      - 18000:18000
     volumes:
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis8000.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
     deploy:
       resources:
@@ -59,14 +50,11 @@ services:
     restart: always
     hostname: redis8001
     container_name: redis8001
-    networks:
-      omc:
-        ipv4_address: 172.16.0.103
     ports:
-      - 8001:6379
-      - 18001:16379
+      - 8001:8001
+      - 18001:18001
     volumes:
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis8001.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
     deploy:
       resources:
@@ -77,14 +65,11 @@ services:
     restart: always
     hostname: redis9000
     container_name: redis9000
-    networks:
-      omc:
-        ipv4_address: 172.16.0.104
     ports:
-      - 9000:6379
-      - 19000:16379
+      - 9000:9000
+      - 19000:19000
     volumes:
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis9000.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
     deploy:
       resources:
@@ -95,19 +80,13 @@ services:
     restart: always
     hostname: redis9001
     container_name: redis9001
-    networks:
-      omc:
-        ipv4_address: 172.16.0.105
     ports:
-      - 9001:6379
-      - 19001:16379
+      - 9001:9001
+      - 19001:19001
     volumes:
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis9001.conf:/etc/redis/redis.conf
     command: redis-server /etc/redis/redis.conf
     deploy:
       resources:
         limits:
           memory: 256M
-networks:
-  omc:
-    external: true
